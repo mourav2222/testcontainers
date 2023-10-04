@@ -36,8 +36,12 @@ public class Abi {
 
   public static void showUsersByTag(String tag, int expectedMinimumUsersCount) {
     $("#user-tags").$(byTagAndText("a", tag)).click();
+
+    int usersize = $$("#selenide-users .user").filter(visible).size();
+    System.out.println(String.format("Users size (expected: %d): %d",expectedMinimumUsersCount, usersize));
+
     $$("#selenide-users .user").filter(visible)
       .shouldHave(sizeGreaterThanOrEqual(expectedMinimumUsersCount));
   }
 
-}
+ }
